@@ -1,0 +1,31 @@
+{#
+``
+title:        Full Width Template
+description:  No container, content spans full width, widgets top and bottom
+layout:
+    - t
+    - t
+    - t
+``
+#}
+
+{% extends '@SymEdit/Page/base.html.twig' %}
+
+{% block content_container %}
+<div id="content">
+    <div class="container">
+        {{ block('breadcrumbs') }}
+        {% block heading %}<h1>{{ Page.tagline }}</h1>{% endblock %}
+
+        {{ block('featured') }}
+    </div>
+
+    {% block content %}
+        {{ Page.content|shortcode|raw }}
+    {% endblock %}
+
+    <div class="container">
+        {{ block('supplemental') }}
+    </div>
+</div>
+{% endblock %}

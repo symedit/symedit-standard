@@ -1,0 +1,67 @@
+scheme:
+    label: Color Scheme
+    extra:
+        icon: adjust
+    variables:
+        base:
+            label: Base Color
+            value: "#135D8E"
+            type: color
+
+        banner-color:
+            label: Banner Color
+            value: "#8888FF"
+            type: color
+
+        body-link-color:
+            label: Link Color
+            value: "#0088CC"
+            type: color
+
+        body-background:
+            label: Background Color
+            value: "#ffffff"
+            type: color
+
+        body-color:
+            label: Body Color
+            value: "#333333"
+            type: color
+
+        navbar-color:
+            label: Nav Text Color
+            value: '#ffffff'
+            type: color
+
+        heading-color:
+            label: H Tag Color
+            value: '#000000'
+            type: color
+
+font:
+    label: Fonts
+    extra:
+        icon: font
+    variables:
+        body-font:
+            label: Body Font
+            value: "'Lucida Sans Unicode', sans-serif"
+
+        heading-font:
+            label: Heading Font
+            value: "'Verdana', sans-serif"
+
+        navbar-font:
+            label: Navbar Font
+            value: "'Lucida Sans Unicode', sans-serif"
+
+        navbar-font-size:
+            label: Navbar Font Size
+            value: "15px"
+
+        google-fonts:
+            label: Google Fonts
+            value: none
+            type: google_font
+            options:
+                required: false

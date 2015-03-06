@@ -1,0 +1,32 @@
+{#
+``
+title: Homepage Template
+description: Template used for your homepage, and others if needed.
+layout:
+    - w
+    - H
+    - w
+``
+#}
+
+{% extends '@SymEdit/Page/base.html.twig' %}
+
+{% block content_container %}
+    <div id="home-background">
+        <div class="container">
+            {{ block('featured') }}
+
+            {{ Page.content|shortcode|raw }}
+        </div>
+    </div>
+
+    <div class="container">
+        <section>
+        {{ Page.summary|shortcode|raw }}
+        </section>
+
+        <section>
+        {{ block('supplemental') }}
+        </section>
+    </div>
+{% endblock %}

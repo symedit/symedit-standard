@@ -1,0 +1,20 @@
+{% set count = widgets|length %}
+
+{% if count > 0 %}
+    {% set col = 12 / count %}
+
+    <div class="widget-container widget-area-{{ area }}">
+        {% if count > 1 %}
+        <div class="row">
+        {% endif %}
+        {% for widget in widgets %}
+            <div class="{% if count > 1 %}col-md-{{ col }} {% endif %}widget-{{ widget.name }}">
+                {% if widget.title is not empty %}<h4>{{ widget.title }}</h4>{% endif %}
+                {{ widget.content|raw }}
+            </div>
+        {% endfor %}
+        {% if count > 1 %}
+        </div>
+        {% endif %}
+    </div>
+{% endif %}

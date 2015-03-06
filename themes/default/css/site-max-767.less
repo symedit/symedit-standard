@@ -1,0 +1,29 @@
+
+.navbar-default {
+    ul.main {
+        padding: 0;
+        margin: 20px 0;
+
+        li {
+            float: none;
+            margin: 4px 0;
+        }
+
+        a {
+            display: block;
+            padding: 5px 0;
+        }
+    }
+    
+    .navbar-toggle {
+        background-color: @color1;
+        
+        .icon-bar { 
+            background-color: @color1contrast;
+        }
+        
+        &:hover, &:focus {
+            background-color: darken(@color1, 10%);
+        }
+    }
+}

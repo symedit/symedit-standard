@@ -1,0 +1,100 @@
+{#
+``
+title: Base Template
+description: Basic Template, widgets top and bottom, content in middle
+layout:
+    - i
+    - ttt
+    - i
+``
+#}
+
+{% extends '@SymEdit/layout.html.twig' %}
+
+{% block stylesheets %}
+{% stylesheets '@theme_css' filter='uglifycss' %}
+        <link rel="stylesheet" href="{{ asset(asset_url) }}">
+{% endstylesheets %}
+        {{ google_fonts() }}
+{% endblock %}
+
+{% block body %}
+        <div id="global">
+            <div class="container">
+                <div class="phone">
+                    {{ symedit_settings_get('company.phone') }}
+                </div>
+
+                <div class="social">
+                    {% include '@SymEdit/CMS/social.html.twig' %}
+                </div>
+            </div>
+        </div>
+
+        <header id="header-main">
+            <div class="container">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header col-sm-4">
+                        <a class="navbar-brand" href="/">
+                            <img src="/media/image/logo.png" alt="{{ symedit_settings_get('company.name') }}" />
+                        </a>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="navbar-collapse collapse">
+                        {% include '@SymEdit/Menu/include.html.twig' with { ulClass: 'main' } %}
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        {% block content_container %}
+        <div class="container">
+                <div id="content">
+                    {{ block('breadcrumbs') }}
+                    {% block heading %}<h1>{{ Page.tagline }}</h1>{% endblock %}
+
+                    {{ block('featured') }}
+
+                    {% block content %}
+                        {{ Page.content|shortcode|raw }}
+                    {% endblock %}
+
+                    {{ block('supplemental') }}
+                </div>
+        </div>
+        {% endblock %}
+{% endblock %}
+
+{% block footer %}
+        <footer id="footer-background">
+            <div class="pre-footer">
+                <div class="container">
+                    {% widgetarea 'footer' %}
+                </div>
+            </div>
+
+            <div class="sub-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Copyright &copy; {{ 'now'|date('Y') }} - {{ symedit_settings_get('company.name') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+{% endblock %}
+
+{% block scripts %}
+{{ parent() }}
+{% javascripts 'bundles/symedit/bootstrap/js/bootstrap.min.js' '@theme_js' filter='uglifyjs2' %}
+<script type="text/javascript" src="{{ asset(asset_url) }}"></script>
+{% endjavascripts %}
+{{ symedit_analytics_render() }}
+{% endblock %}

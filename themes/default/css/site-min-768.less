@@ -1,0 +1,105 @@
+
+
+// Navbar
+.navbar-default {
+
+    ul.main {
+        margin: 0;
+        margin-top: 36px;
+        height: 60px;
+        padding: 0;
+        float: right;
+
+        > li {
+            float: left;
+            margin: 0 @navbar-item-spacing;
+
+            > a {
+                color: @navbar-color;
+                display: block;
+                padding: @navbar-item-padding;
+                .rounded(5px);
+
+                .caret {
+                    border-top-color: @navbar-color;
+                }
+
+                &:hover {
+                    background-color: darken(@color1, 10%);
+                    color: @color1contrast;
+
+                    .caret {
+                        border-top-color: @color1contrast;
+                    }
+                }
+            }
+
+            &.active {
+                > a {
+                    color: @color1contrast;
+                    background-color: darken(@color1, 5%);
+                }
+            }
+        }
+    }
+
+    // Subnav
+
+    ul > li {
+
+        ul {
+            .rounded(5px);
+            min-width: 180px;
+            margin-left: 5px;
+            .drop-shadow(0,3px,10px,.5);
+            display: none;
+            z-index: 10000;
+            background-color: #fff;
+            position: absolute;
+            padding: 10px 0;
+
+            a {
+                display: block;
+                color: #000;
+                padding: 8px 14px;
+                font-size: 90%;
+
+                &:hover {
+                    background-color: rgba(0,0,0,.05);
+                }
+            }
+        }
+
+        ul::before {
+            content: '';
+            display: inline-block;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-bottom: 9px solid #CCC;
+            border-bottom-color: rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: -9px;
+            left: 25px;
+        }
+
+        ul::after {
+            top: -8px;
+            left: 26px;
+            right: auto;
+            content: "";
+            border-style: solid;
+            width: 0;
+            display: block;
+            position: absolute;
+            border-width: 0 8px 8px;
+            border-color: white transparent;
+        }
+
+        &:hover {
+            ul {
+                display: block;
+            }
+        }
+
+    }
+}
